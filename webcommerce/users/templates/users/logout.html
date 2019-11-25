@@ -1,0 +1,48 @@
+{% extends "globalbiz/base.html" %}
+
+{% block title %} Logout {% endblock title %}
+
+{% block hero %} 
+<section class="hero-area bg-1 text-center overly">
+        <!-- Container Start -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Header Contetnt -->
+                    <div class="content-block">
+                        <h1>Your Global Store </h1>
+                        <p>Join our Global Goods Online Shop <br> For the most affordable quality goods</p>
+                        <div class="short-popular-category-list text-center">
+                            <h2>Popular Category</h2>
+                            <ul class="list-inline">
+                                {% for category in categories %}
+                                <li class="list-inline-item">
+                                    <a href="category.html"><i class="fad fa-circle"></i> {{category.name}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>	
+                    </div>	
+                </div>
+            </div>
+        </div>
+        <!-- Container End -->
+    </section>
+{% endblock hero %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title">
+                 <div class="alert alert-danger" role="alert">
+                    <p>You have been logged out</p>
+                </div>
+                <a href="{% url 'login' %}">Login Again</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

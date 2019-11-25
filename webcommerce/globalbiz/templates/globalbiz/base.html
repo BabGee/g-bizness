@@ -26,6 +26,8 @@
   <link href="{% static 'globalbiz/css/nice-select.css' %}" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="{% static 'globalbiz/css/style.css' %}" rel="stylesheet">
+  <!-- kit's code -->
+  <script src="https://kit.fontawesome.com/028a3589a1.js" crossorigin="anonymous"></script>
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -39,9 +41,12 @@
 <body class="body-wrapper">
 
 	{% include 'globalbiz/navbar.html' %}
-  {% block hero %} 
-  {% endblock hero %}  
-		{% block content %}
+
+    {% block hero %} 
+
+    {% endblock hero %}
+
+    {% block content %}
 
 		{% endblock content %}
 </body>
@@ -65,6 +70,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="{% static 'globalbiz/js/gmap.js' %}"></script>
 <script src="{% static 'globalbiz/js/script.js' %}"></script>
+
 </footer>
 
 </html>

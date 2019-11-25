@@ -319,7 +319,7 @@ button {
   padding: 100px 0;
 }
 
-.section-sm {
+.section-smm {
   padding: 70px 0;
 }
 
@@ -435,17 +435,17 @@ button {
   border-radius: 4px;
 }
 
-.btn-main, .btn-main-sm {
+.btn-main, .btn-main-smm {
   background: #5672f9;
   color: #fff;
 }
 
-.btn-main:hover, .btn-main-sm:hover {
+.btn-main:hover, .btn-main-smm:hover {
   background: #082de1;
   color: #fff;
 }
 
-.btn-main-sm {
+.btn-main-smm {
   padding: 6px 20px;
   font-size: 12px;
 }
@@ -635,19 +635,19 @@ ul.pagination .active a {
 }
 
 .bg-1 {
-  background: url("../images/home/hero.jpg");
+  background: url("../images/smm.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .bg-2 {
-  background: url(../images/subscription/subscription-back.jpg);
+  background: url("../images/smm.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .bg-3 {
-  background: url(../images/call-to-action/cta-background.jpg);
+  background: url("../images/smm.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -809,29 +809,29 @@ ul.pagination .active a {
 }
 
 @media (min-width: 992px) {
-  .dropdown-slide {
+  .dropdown-smmide {
     position: static;
   }
-  .dropdown-slide .open > a, .dropdown-slide .open > a:focus, .dropdown-slide .open > a:hover {
+  .dropdown-smmide .open > a, .dropdown-smmide .open > a:focus, .dropdown-smmide .open > a:hover {
     background: transparent;
   }
-  .dropdown-slide.full-width .dropdown-menu {
+  .dropdown-smmide.full-width .dropdown-menu {
     left: 0 !important;
     right: 0 !important;
   }
-  .dropdown-slide:hover .dropdown-menu {
+  .dropdown-smmide:hover .dropdown-menu {
     display: none;
     opacity: 1;
     display: block;
-    -webkit-transform: translate(0px, 0px);
-            transform: translate(0px, 0px);
+    -webkit-transform: transmmate(0px, 0px);
+            transform: transmmate(0px, 0px);
     opacity: 1;
     visibility: visible;
     color: #777;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: transmmateY(0px);
+            transform: transmmateY(0px);
   }
-  .dropdown-slide .dropdown-menu {
+  .dropdown-smmide .dropdown-menu {
     margin-top: 0;
     border-radius: 0;
     opacity: 1;
@@ -845,8 +845,8 @@ ul.pagination .active a {
     display: block;
     visibility: hidden;
     opacity: 0;
-    -webkit-transform: translateY(30px);
-            transform: translateY(30px);
+    -webkit-transform: transmmateY(30px);
+            transform: transmmateY(30px);
     transition: visibility 0.2s, opacity 0.2s, -webkit-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
     transition: visibility 0.2s, opacity 0.2s, transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
     transition: visibility 0.2s, opacity 0.2s, transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99), -webkit-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
@@ -854,7 +854,7 @@ ul.pagination .active a {
 }
 
 @media (min-width: 992px) and (max-width: 480px) {
-  .dropdown-slide .dropdown-menu {
+  .dropdown-smmide .dropdown-menu {
     -webkit-transform: none;
             transform: none;
   }
@@ -981,28 +981,28 @@ ul.pagination .active a {
   color: #fff !important;
 }
 
-.category-slider {
+.category-smmider {
   box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.07);
   background: #fff;
   padding: 20px 0;
 }
 
-.category-slider .item {
+.category-smmider .item {
   text-align: center;
 }
 
-.category-slider .item a {
+.category-smmider .item a {
   display: inline-block;
   padding: 20px 40px;
   background: #fff;
 }
 
-.category-slider .item a h4 {
+.category-smmider .item a h4 {
   font-size: 14px;
   margin-top: 10px;
 }
 
-.category-slider .item a i {
+.category-smmider .item a i {
   font-size: 40px;
 }
 
@@ -1434,8 +1434,8 @@ ul.pagination .active a {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: transmmateY(-50%);
+          transform: transmmateY(-50%);
   z-index: 2;
 }
 
@@ -1580,39 +1580,39 @@ ul.pagination .active a {
   padding: 30px;
 }
 
-.product-slider {
+.product-smmider {
   padding: 40px 0;
 }
 
-.product-slider .carousel-indicators li {
+.product-smmider .carousel-indicators li {
   background: #888;
 }
 
-.product-slider .carousel-indicators li.active {
+.product-smmider .carousel-indicators li.active {
   background: #5672f9;
 }
 
-.product-slider .slick-dots {
+.product-smmider .smmick-dots {
   display: flex;
   bottom: -50px;
 }
 
-.product-slider .slick-dots li {
+.product-smmider .smmick-dots li {
   display: inline-block;
   width: 100%;
   height: 100%;
   padding-left: 0;
 }
 
-.product-slider .slick-dots li:first-child {
+.product-smmider .smmick-dots li:first-child {
   margin-left: 0;
 }
 
-.product-slider .slick-dots li:last-child {
+.product-smmider .smmick-dots li:last-child {
   margin-right: 0;
 }
 
-.product-slider .slick-dots li img {
+.product-smmider .smmick-dots li img {
   max-width: 100%;
   height: auto;
 }
@@ -1727,15 +1727,15 @@ ul.pagination .active a {
   color: #888;
 }
 
-.widget.price-range .slider.slider-horizontal {
+.widget.price-range .smmider.smmider-horizontal {
   width: 100%;
 }
 
-.widget.price-range .slider-handle {
+.widget.price-range .smmider-handle {
   background: #5672f9;
 }
 
-.widget.price-range .slider-track {
+.widget.price-range .smmider-track {
   margin-top: -2px;
   height: 5px;
   box-shadow: none;
@@ -1743,7 +1743,7 @@ ul.pagination .active a {
   background: #f5f5f5;
 }
 
-.widget.price-range .slider-selection {
+.widget.price-range .smmider-selection {
   background: #dedede;
   box-shadow: none;
 }
@@ -2029,7 +2029,7 @@ ul.pagination .active a {
   }
 }
 
-.client-slider-03 {
+.client-smmider-03 {
   padding: 30px 0 0 0;
 }
 
@@ -2293,7 +2293,7 @@ article {
   border-radius: 2px;
 }
 
-article .image, article .video, article .post-slider {
+article .image, article .video, article .post-smmider {
   margin-bottom: 25px;
 }
 
@@ -2338,23 +2338,23 @@ article .video .video-box a iframe {
   height: 100%;
 }
 
-article .post-slider .owl-nav {
+article .post-smmider .owl-nav {
   position: absolute;
   right: 5px;
   bottom: 5px;
 }
 
-article .post-slider .owl-nav i {
+article .post-smmider .owl-nav i {
   font-size: 30px;
   color: #fff;
 }
 
-article .post-slider .owl-nav [class*=owl-] {
+article .post-smmider .owl-nav [class*=owl-] {
   padding: 7px 16px;
   background-color: rgba(255, 255, 255, 0.35);
 }
 
-article .post-slider .owl-nav [class*=owl-]:hover {
+article .post-smmider .owl-nav [class*=owl-]:hover {
   background-color: #5672f9;
 }
 
