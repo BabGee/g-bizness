@@ -95,7 +95,7 @@
 								<div class="product-item bg-light">
 									<div class="card">
 										<div class="thumb-content">
-											<a href="">
+											<a href="{{newproduct.title}}">
 												<img class="card-img-top img-fluid" src="{{newproduct.image.url}}" alt="">
 											</a>
 										</div>
@@ -110,7 +110,9 @@
 												</li>
 											</ul>
 											<p class="card-text">{{newproduct.description}}</p>
-											<p class="card-text">Kshs {{newproduct.price}}</p>
+											<h4 class="font-weight-bold blue-text">
+												<strong>Kshs {{newproduct.price}}</strong>
+											</h4>
 											<a href="{{newproduct.title}}" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	
@@ -141,7 +143,7 @@
 								<div class="product-item bg-light">
 									<div class="card">
 										<div class="thumb-content">
-											<a href="">
+											<a href="{{offer.title}}">
 												<img class="card-img-top img-fluid" src="{{offer.image.url}}" alt="">
 											</a>
 										</div>
@@ -156,7 +158,9 @@
 												</li>
 											</ul>
 											<p class="card-text">{{offer.description}}</p>
-											<p class="card-text">Kshs {{offer.price}}</p>
+											<h4 class="font-weight-bold blue-text">
+												<strong>Kshs {{offer.price}}</strong>
+											</h4>
 											<a href="#" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	

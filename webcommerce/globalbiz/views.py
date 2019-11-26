@@ -13,8 +13,15 @@ def home(request):
 
 
 def macbook(request):
-    context = {}
-
+    context = {
+        'mac' : Product.objects.filter(title='Macbook Pro New').first()
+    }
+   
     return render(request, 'globalbiz/products/mac.html', context)
 
-
+def jeep(request):
+    context = {
+        'jeep' : Product.objects.filter(title='Jeep New Model 2019').first()
+    }
+   
+    return render(request, 'globalbiz/products/jeep.html', context)

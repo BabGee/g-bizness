@@ -2,14 +2,14 @@
 
 {% load static %}
 
-{% block title %} {{mac.title}} {% endblock title %}
+{% block title %} {{jeep.title}} {% endblock title %}
 
 
 {% block hero %} 
 <section class="hero-area bg-1 text-center overly">
 	<!-- Container Start -->
 	<div class="container">
-		<h1 class="font-weight-bold white-text">{{mac.title}}</h1>
+		<h1 class="font-weight-bold white-text">{{jeep.title}}</h1>
 	</div>
 	<!-- Container End -->
 </section>
@@ -18,13 +18,13 @@
 {% block content %}
 <div class="container">
     <aside>
-        <img src="{{mac.image.url}}" alt="">
-        <h1 class="font-weight-bold blue-text">{{mac.title}}</h1>
-        <h4 class="font-weight-bold blue-text">Kshs {{mac.price}}</h4>
+        <img src="{{jeep.image.url}}" alt="">
+        <h1 class="font-weight-bold blue-text">{{jeep.title}}</h1>
+        <h4 class="font-weight-bold blue-text">Kshs {{jeep.price}}</h4>
     </aside>
 
 <section>
-        <p>{{mac.description}}</p>
+        <p>{{jeep.description}}</p>
         <a href="#" class="btn btn-primary">Add To Cart</a>
 </section>
 
