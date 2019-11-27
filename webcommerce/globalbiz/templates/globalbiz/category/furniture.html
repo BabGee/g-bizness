@@ -2,66 +2,14 @@
 
 {% load static %}
 
-{% block title %} Home Global Biz {% endblock title %}
+{% block title %} {{jeep.title}} {% endblock title %}
 
-{% block hero %}
-<!--===============================
-=            Hero Area            =
-================================-->
 
+{% block hero %} 
 <section class="hero-area bg-1 text-center overly">
 	<!-- Container Start -->
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Header Contetnt -->
-				<div class="content-block">
-					<h1>Your Global Store </h1>
-					<p>Join our Global Goods Online Shop <br> For the most affordable quality goods</p>
-					<div class="short-popular-category-list text-center">
-						<h2>Popular Category</h2>
-						<ul class="list-inline">
-							{% for category in categories %}
-							<li class="list-inline-item">
-								<a href="{{category.name}}"><i class="fad fa-circle"></i> {{category.name}}</a>
-							</li>
-							{% endfor %}
-						</ul>
-					</div>	
-				</div>
-				
-				<!-- Advance Search -->
-				<div class="advance-search">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
-										<form>
-											<div class="form-row">
-												<div class="form-group col-md-4">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="What are you looking for">
-												</div>
-												<div class="form-group col-md-3">
-													<select class="w-100 form-control mt-lg-1 mt-md-2">
-														<option>Category</option>
-														<option value="1">Top rated</option>
-														<option value="2">Lowest Price</option>
-														<option value="4">Highest Price</option>
-													</select>
-												</div>
-												<div class="form-group col-md-3">
-													<input type="text" class="form-control my-2 my-lg-1" id="inputLocation4" placeholder="Location">
-												</div>
-												<div class="form-group col-md-2 align-self-center">
-													<button type="submit" class="btn btn-primary">Search Now</button>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-					</div>
-				</div>	
-			</div>
-		</div>
+		<h1 class="font-weight-bold white-text">{{jeep.title}}</h1>
 	</div>
 	<!-- Container End -->
 </section>
@@ -82,7 +30,7 @@
 			<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h2>New Products</h2>
+							<h2>New Furniture</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
 						</div>
 					</div>
@@ -90,30 +38,30 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="trending-ads-slide">
-							{% for newproduct in newProducts %}
+							{% for nf in newFurn %}
 							<div class="col-sm-12 col-lg-4">
 								<div class="product-item bg-light">
 									<div class="card">
 										<div class="thumb-content">
-											<a href="{{newproduct.title}}">
-												<img class="card-img-top img-fluid" src="{{newproduct.image.url}}" alt="">
+											<a href="{{nf.title}}">
+												<img class="card-img-top img-fluid" src="{{nf.image.url}}" alt="">
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="{{newproduct.title}}">{{newproduct.title}}</a></h4>
+											<h4 class="card-title"><a href="{{nf.title}}">{{nf.title}}</a></h4>
 											<ul class="list-inline product-meta">
 												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{newproduct.category}}</a>
+													<a href="single.html"><i class="fa fa-folder-open-o"></i>{{nf.category}}</a>
 												</li>
 												<li class="list-inline-item">
 													<a href="#"><i class="fa fa-folder-open-o"></i>New</a>
 												</li>
 											</ul>
-											<p class="card-text">{{newproduct.description}}</p>
+											<p class="card-text">{{nf.description}}</p>
 											<h4 class="text-blue bg-light">
-												Kshs {{newproduct.price}}
+												Kshs {{nf.price}}
 											</h4>
-											<a href="{{newproduct.title}}" class="btn btn-primary">View Details</a>
+											<a href="{{nf.title}}" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	
 								</div>		
@@ -130,7 +78,7 @@
 			<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h2>Amazing Offers</h2>
+							<h2>Amazing Offers Furniture</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
 						</div>
 					</div>
@@ -138,28 +86,28 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="trending-ads-slide">
-							{% for offer in offers %}
+							{% for of in offerFurn %}
 							<div class="col-sm-12 col-lg-4">
 								<div class="product-item bg-light">
 									<div class="card">
 										<div class="thumb-content">
-											<a href="{{offer.title}}">
-												<img class="card-img-top img-fluid" src="{{offer.image.url}}" alt="">
+											<a href="{{of.title}}">
+												<img class="card-img-top img-fluid" src="{{of.image.url}}" alt="">
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="single.html">{{offer.title}}</a></h4>
+											<h4 class="card-title"><a href="#">{{of.title}}</a></h4>
 											<ul class="list-inline product-meta">
 												<li class="list-inline-item">
-													<a href="single.html"><i class="fa fa-folder-open-o"></i>{{offer.category}}</a>
+													<a href="#"><i class="fa fa-folder-open-o"></i>{{of.category}}</a>
 												</li>
 												<li class="list-inline-item">
 													<a href="#"><i class="fa fa-folder-open-o"></i>Offers</a>
 												</li>
 											</ul>
-											<p class="card-text">{{offer.description}}</p>
+											<p class="card-text">{{of.description}}</p>
 											<h4 class="font-weight-bold blue-text">
-												<strong>Kshs {{offer.price}}</strong>
+												<strong>Kshs {{of.price}}</strong>
 											</h4>
 											<a href="#" class="btn btn-primary">View Details</a>
 										</div>		
