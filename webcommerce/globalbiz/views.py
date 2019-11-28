@@ -2,6 +2,15 @@ from django.shortcuts import render
 from category.models import Category
 from product.models import Product
 
+# views.py
+from django.views.generic import ListView
+from django.shortcuts import render
+from product.models import Product
+
+class ProductList(ListView):
+    model = Product
+
+
 #******************pages.html ***********************************
 def home(request):
     context = {
@@ -12,45 +21,10 @@ def home(request):
     }
     return render(request, 'globalbiz/index.html', context)
 
-
-#****************** product details.html ***********************************
-
-def macbook(request):
+def productdetail(request,pk):
     context = {
-        'mac' : Product.objects.filter(title='Macbook Pro New').first()
+        'product': Product.objects.get(pk = pk)
     }
-   
-    return render(request, 'globalbiz/products/mac.html', context)
-
-def jeep(request):
-    context = {
-        'jeep' : Product.objects.filter(title='Jeep New Model 2019').first()
-    }
-   
-    return render(request, 'globalbiz/products/jeep.html', context)
-
-def sofa(request):
-    context = {
-        'sofa' : Product.objects.filter(title='Sofa Set Fabric').first()
-    }
-   
-    return render(request, 'globalbiz/products/sofa.html', context)
+    return render(request, 'globalbiz/product.html', context)
 
 
-#****************** Categories.html ***********************************
-
-def electronics(request):
-    context = {
-        'newElectronics' : Product.objects.filter(category__name='Electronics', rating__name='New'),
-        'offerElectronics' : Product.objects.filter(category__name='Electronics', rating__name='Offer')
-    }
-   
-    return render(request, 'globalbiz/category/electronics.html', context)
-
-def furniture(request):
-    context = {
-        'newFurn' : Product.objects.filter(category__name='Furniture', rating__name='New'),
-        'offerFurn' : Product.objects.filter(category__name='Furniture', rating__name='Offer')
-    }
-   
-    return render(request, 'globalbiz/category/furniture.html', context)

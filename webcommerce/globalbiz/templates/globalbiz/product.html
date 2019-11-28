@@ -1,15 +1,16 @@
+
 {% extends "globalbiz/base.html" %}
 
 {% load static %}
 
-{% block title %} {{jeep.title}} {% endblock title %}
+{% block title %} {{product.title}} {% endblock title %}
 
 
 {% block hero %} 
 <section class="hero-area bg-1 text-center overly">
 	<!-- Container Start -->
 	<div class="container">
-		<h1 class="font-weight-bold white-text">{{jeep.title}}</h1>
+		<h1 class="font-weight-bold white-text">{{product.title}}</h1>
 	</div>
 	<!-- Container End -->
 </section>
@@ -18,13 +19,13 @@
 {% block content %}
 <div class="container">
     <aside>
-        <img src="{{jeep.image.url}}" alt="">
-        <h1 class="font-weight-bold blue-text">{{jeep.title}}</h1>
-        <h4 class="font-weight-bold blue-text">Kshs {{jeep.price}}</h4>
+        <img src="{{product.image.url}}" alt="">
+        <h1 class="font-weight-bold blue-text">{{product.title}}</h1>
+        <h4 class="font-weight-bold blue-text">Kshs {{product.price}}</h4>
     </aside>
 
 <section>
-        <p>{{jeep.description}}</p>
+        <p>{{product.description}}</p>
         <a href="#" class="btn btn-primary">Add To Cart</a>
 </section>
 
