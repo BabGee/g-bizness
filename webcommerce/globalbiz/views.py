@@ -2,8 +2,6 @@ from django.shortcuts import render
 from category.models import Category
 from product.models import Product
 
-
-
 #******************pages.html ***********************************
 def home(request):
     context = {
@@ -30,6 +28,14 @@ def jeep(request):
     }
    
     return render(request, 'globalbiz/products/jeep.html', context)
+
+def sofa(request):
+    context = {
+        'sofa' : Product.objects.filter(title='Sofa Set Fabric').first()
+    }
+   
+    return render(request, 'globalbiz/products/sofa.html', context)
+
 
 #****************** Categories.html ***********************************
 

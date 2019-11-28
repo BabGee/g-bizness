@@ -10,4 +10,5 @@ urlpatterns = [
     #categories path
     path('Electronics', views.electronics, name='globalbiz-electronics'),
     path('Furniture', views.furniture, name='globalbiz-furniture'),
+    path('Sofa Set Fabric', views.sofa, name='globalbiz-sofa'),
 ]
