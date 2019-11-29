@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
 
-from globalbiz.views import ProductList, productdetail
+from globalbiz.views import ProductList, productdetail, CategoryList, categorydetail
 
 
 urlpatterns = [
@@ -33,6 +33,8 @@ urlpatterns = [
       #************test*****************************
     path('products/', ProductList.as_view(template_name='globalbiz/productlist.html')),
     path('products/<int:pk>/', productdetail, name='product-detail'),
+    path('categorys/', CategoryList.as_view(template_name='globalbiz/categorylist.html')),
+    path('categorys/<int:pk>/', categorydetail, name='category-detail'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

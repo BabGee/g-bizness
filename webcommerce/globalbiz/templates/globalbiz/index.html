@@ -23,7 +23,7 @@
 						<ul class="list-inline">
 							{% for category in categories %}
 							<li class="list-inline-item">
-								<a href="{{category.name}}"><i class="fad fa-circle"></i> {{category.name}}</a>
+								<a href="{% url 'category-detail' pk=category.id %}"><i class="fad fa-circle"></i> {{category.name}}</a>
 							</li>
 							{% endfor %}
 						</ul>
@@ -100,7 +100,7 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="{{newproduct.title}}">{{newproduct.title}}</a></h4>
+											<h4 class="card-title"><a href="{% url 'product-detail' pk=newproduct.id %}">{{newproduct.title}}</a></h4>
 											<ul class="list-inline product-meta">
 												<li class="list-inline-item">
 													<a href="#"><i class="fa fa-folder-open-o"></i>{{newproduct.category}}</a>
@@ -113,7 +113,7 @@
 											<h4 class="text-blue bg-light">
 												Kshs {{newproduct.price}}
 											</h4>
-											<a href="{{newproduct.title}}" class="btn btn-primary">View Details</a>
+											<a href="{% url 'product-detail' pk=newproduct.id %}" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	
 								</div>		
@@ -148,10 +148,10 @@
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="single.html">{{offer.title}}</a></h4>
+											<h4 class="card-title"><a href="{% url 'product-detail' pk=offer.id %}">{{offer.title}}</a></h4>
 											<ul class="list-inline product-meta">
 												<li class="list-inline-item">
-													<a href="single.html"><i class="fa fa-folder-open-o"></i>{{offer.category}}</a>
+													<a href="#"><i class="fa fa-folder-open-o"></i>{{offer.category}}</a>
 												</li>
 												<li class="list-inline-item">
 													<a href="#"><i class="fa fa-folder-open-o"></i>Offers</a>
@@ -161,7 +161,7 @@
 											<h4 class="font-weight-bold blue-text">
 												<strong>Kshs {{offer.price}}</strong>
 											</h4>
-											<a href="#" class="btn btn-primary">View Details</a>
+											<a href="{% url 'product-detail' pk=offer.id %}" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	
 								</div>		

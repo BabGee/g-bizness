@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from category.models import Category
 from product.models import Product
 
@@ -6,9 +6,6 @@ from product.models import Product
 from django.views.generic import ListView
 from django.shortcuts import render
 from product.models import Product
-
-class ProductList(ListView):
-    model = Product
 
 
 #******************pages.html ***********************************
@@ -21,10 +18,19 @@ def home(request):
     }
     return render(request, 'globalbiz/index.html', context)
 
+class ProductList(ListView):
+    model = Product
+
 def productdetail(request,pk):
     context = {
         'product': Product.objects.get(pk = pk)
     }
     return render(request, 'globalbiz/product.html', context)
 
+class CategoryList(ListView):
+    model = Category
 
+def categorydetail(request,pk):
+    context = {}
+    
+    return render(request, 'globalbiz/category.html', context)
