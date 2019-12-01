@@ -2,25 +2,20 @@
 
 {% load static %}
 
-{% block title %} {{products.name}} {% endblock title %}
+{% block title %} {{newProducts.name}} {% endblock title %}
 
 
 {% block hero %} 
 <section class="hero-area bg-1 text-center overly">
 	<!-- Container Start -->
 	<div class="container">
-		<h1 class="font-weight-bold white-text">{{products.name}}</h1>
+		<h1 class="font-weight-bold white-text">{{newProducts.name}}</h1>
 	</div>
 	<!-- Container End -->
 </section>
 {% endblock hero %}
 
 {% block content %}
-
-<!--===================================
-=            Client Slider            =
-====================================-->
-
 
 <!--===========================================
 =            Popular deals section            =
@@ -31,7 +26,7 @@
 			<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h2>{{products.name}}</h2>
+							<h2>New</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
 						</div>
 					</div>
@@ -39,25 +34,30 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="trending-ads-slide">
-							{% for product in products %}
+							{% for new in new_products_with_category %}
 							<div class="col-sm-12 col-lg-4">
 								<div class="product-item bg-light">
 									<div class="card">
+										<div class="thumb-content">
+											<a href="{% url 'product-detail' pk=new.id %}">
+												<img class="card-img-top img-fluid" src="{{new.image.url}}" alt="">
+											</a>
+										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="{{product.title}}">{{product.title}}</a></h4>
+											<h4 class="card-title"><a href="{% url 'product-detail' pk=new.id %}">{{new.title}}</a></h4>
 											<ul class="list-inline product-meta">
 												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{product.products}}</a>
+													<a href="#"><i class="fa fa-folder-open-o"></i>{{new.category.name}}</a>
 												</li>
 												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{product.rating}}</a>
+													<a href="#"><i class="fa fa-folder-open-o"></i>{{new.rating.name}}</a>
 												</li>
 											</ul>
-											<p class="card-text">{{product.description}}</p>
-											<h4 class="text-blue bg-light">
-												Kshs {{product.price}}
+											<p class="card-text">{{new.description}}</p>
+											<h4 class="font-weight-bold blue-text">
+												<strong>Kshs {{new.price}}</strong>
 											</h4>
-											<a href="{{electronic.title}}" class="btn btn-primary">View Details</a>
+											<a href="{% url 'product-detail' pk=new.id %}" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	
 								</div>		
@@ -74,7 +74,7 @@
 			<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h2>New Electronics</h2>
+							<h2>Offers</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
 						</div>
 					</div>
@@ -82,30 +82,30 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="trending-ads-slide">
-							{% for newElectronic in newElectronics %}
+							{% for offer in offer_products_with_category %}
 							<div class="col-sm-12 col-lg-4">
 								<div class="product-item bg-light">
 									<div class="card">
 										<div class="thumb-content">
-											<a href="{{newElectronic.title}}">
-												<img class="card-img-top img-fluid" src="{{newElectronic.image.url}}" alt="">
+											<a href="{% url 'product-detail' pk=offer.id %}">
+												<img class="card-img-top img-fluid" src="{{offer.image.url}}" alt="">
 											</a>
 										</div>
 										<div class="card-body">
-											<h4 class="card-title"><a href="single.html">{{newElectronic.title}}</a></h4>
+											<h4 class="card-title"><a href="{% url 'product-detail' pk=offer.id %}">{{offer.title}}</a></h4>
 											<ul class="list-inline product-meta">
 												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{newElectronic.products}}</a>
+													<a href="#"><i class="fa fa-folder-open-o"></i>{{offer.category.name}}</a>
 												</li>
 												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>New</a>
+													<a href="#"><i class="fa fa-folder-open-o"></i>{{offer.rating.name}}</a>
 												</li>
 											</ul>
-											<p class="card-text">{{newElectronic.description}}</p>
+											<p class="card-text">{{offer.description}}</p>
 											<h4 class="font-weight-bold blue-text">
-												<strong>Kshs {{newElectronic.price}}</strong>
+												<strong>Kshs {{offer.price}}</strong>
 											</h4>
-											<a href="#" class="btn btn-primary">View Details</a>
+											<a href="{% url 'product-detail' pk=offer.id %}" class="btn btn-primary">View Details</a>
 										</div>		
 									</div>	
 								</div>		
@@ -116,50 +116,6 @@
 			</div>
 	</div>
 </section>
-
-<!--==========================================
-=            All products Section            =
-===========================================-->
-
-<section class="section">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				<div class="section-title">
-					<h2>All Categories</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
-				</div>
-				<div class="row">
-					<!-- products list -->
-					{% for products in categories %}
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="products-block">
-							<div class="header">
-								<i class="fad fa-circle icon-bg-1"></i>
-								<h4>{{products.name}}</h4>
-							</div>
-							<ul class="products-list" >
-								<li><a href="products.html">Laptops <span>93</span></a></li>
-								<li><a href="products.html">Iphone <span>233</span></a></li>
-								<li><a href="products.html">Microsoft  <span>183</span></a></li>
-								<li><a href="products.html">Monitors <span>343</span></a></li>
-							</ul>
-						</div>
-					</div> <!-- /products List -->	
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Container End -->
-</section>
-
-
-<!--====================================
-=            Call to Action            =
-=====================================-->
 
 
 {% endblock content %}

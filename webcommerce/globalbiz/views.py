@@ -31,6 +31,10 @@ class CategoryList(ListView):
     model = Category
 
 def categorydetail(request,pk):
-    context = {}
+    cat = Category.objects.get(pk = pk)
+    context = {
+        'new_products_with_category': Product.objects.filter(category__name = cat, rating__name='New'),
+        'offer_products_with_category': Product.objects.filter(category__name = cat, rating__name='Offer')
+    }
     
     return render(request, 'globalbiz/category.html', context)

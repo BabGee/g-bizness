@@ -21,7 +21,16 @@
     <aside>
         <img src="{{product.image.url}}" alt="">
         <h1 class="font-weight-bold blue-text">{{product.title}}</h1>
-        <h4 class="font-weight-bold blue-text">Kshs {{product.price}}</h4>
+        <h4 class="font-weight-bold blue-text">
+                {% if product.discount_price %}
+                <span class="mr-1">
+                    <del>Kshs {{ product.price }}</del>
+                </span>
+                <span>Kshs {{ product.discount_price }}</span>
+                {% else %}
+                <span>Kshs {{ product.price }}</span>
+                {% endif %}
+        </h4>
     </aside>
 
 <section>

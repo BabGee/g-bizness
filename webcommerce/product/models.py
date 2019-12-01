@@ -14,6 +14,7 @@ class Product(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField()
     price = models.IntegerField()
+    discount_price = models.IntegerField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
     rating = models.ForeignKey(Rating, on_delete=models.CASCADE, default=None, null=True)
     
