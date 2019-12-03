@@ -19,8 +19,17 @@ from users import views as users_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
-
-from globalbiz.views import ProductList, productdetail, CategoryList, categorydetail
+from globalbiz.views import (
+    ProductList,
+    productdetail,
+    CategoryList, 
+    categorydetail, 
+    add_to_cart, 
+    remove_from_cart, 
+    remove_single_product_from_cart,
+    OrderSummaryView,
+    )
+   
 
 
 urlpatterns = [
@@ -35,6 +44,10 @@ urlpatterns = [
     path('products/<int:pk>/', productdetail, name='product-detail'),
     path('categorys/', CategoryList.as_view(template_name='globalbiz/categorylist.html')),
     path('categorys/<int:pk>/', categorydetail, name='category-detail'),
+    path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
+    path('add-to-cart/<int:pk>/', add_to_cart, name='add-to-cart'),
+    path('remove-from-cart/<int:pk>/', remove_from_cart, name='remove-from-cart'),
+    path('remove-product-from-cart/<int:pk>/', remove_single_product_from_cart, name='remove-single-product-from-cart'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

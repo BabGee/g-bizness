@@ -55,7 +55,14 @@
 											</ul>
 											<p class="card-text">{{new.description}}</p>
 											<h4 class="font-weight-bold blue-text">
-												<strong>Kshs {{new.price}}</strong>
+												{% if new.discount_price %}
+												<span class="mr-1">
+													<del>Kshs {{ new.price }}</del>
+												</span>
+												<span>Kshs {{ new.discount_price }}</span>
+												{% else %}
+												<span>Kshs {{ new.price }}</span>
+												{% endif %}
 											</h4>
 											<a href="{% url 'product-detail' pk=new.id %}" class="btn btn-primary">View Details</a>
 										</div>		
@@ -103,7 +110,14 @@
 											</ul>
 											<p class="card-text">{{offer.description}}</p>
 											<h4 class="font-weight-bold blue-text">
-												<strong>Kshs {{offer.price}}</strong>
+												{% if offer.discount_price %}
+												<span class="mr-1">
+													<del>Kshs {{ offer.price }}</del>
+												</span>
+												<span>Kshs {{ offer.discount_price }}</span>
+												{% else %}
+												<span>Kshs {{ offer.price }}</span>
+												{% endif %}
 											</h4>
 											<a href="{% url 'product-detail' pk=offer.id %}" class="btn btn-primary">View Details</a>
 										</div>		
