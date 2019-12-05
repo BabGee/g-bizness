@@ -28,6 +28,8 @@ from globalbiz.views import (
     remove_from_cart, 
     remove_single_product_from_cart,
     OrderSummaryView,
+    CheckoutView,
+    AddCouponView
     )
    
 
@@ -39,7 +41,6 @@ urlpatterns = [
     path('login', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-      #************test*****************************
     path('products/', ProductList.as_view(template_name='globalbiz/productlist.html')),
     path('products/<int:pk>/', productdetail, name='product-detail'),
     path('categorys/', CategoryList.as_view(template_name='globalbiz/categorylist.html')),
@@ -48,7 +49,9 @@ urlpatterns = [
     path('add-to-cart/<int:pk>/', add_to_cart, name='add-to-cart'),
     path('remove-from-cart/<int:pk>/', remove_from_cart, name='remove-from-cart'),
     path('remove-product-from-cart/<int:pk>/', remove_single_product_from_cart, name='remove-single-product-from-cart'),
-]
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('add-coupon/', AddCouponView.as_view(), name='add-coupon'),
+     ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
