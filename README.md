@@ -12,4 +12,6 @@ cd webcommerce
 
 python manage.py migrate
 
+python manage.py createsuperuser # create your admin log in credentials to add Products and categories
+
 python manage.py runserver
