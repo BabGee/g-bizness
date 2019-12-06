@@ -12,15 +12,41 @@
             <form method="POST" class="card-body">
               {% csrf_token %}
 
-              <h3>Delivery address</h3>
+              <h3>Delivery Details</h3>
 
               <div class='hideable_delivery_form'>
 
-                <div class="md-form mb-5">
-                  <input type='text' placeholder='1234 Main St' id='delivery_address' name='delivery_address' class='form-control' />
-                  <label for="delivery_address" class="">Address</label>
-                </div>
+                  <div class="row">
+                      <div class="col-lg-4 col-md-12 mb-4">
+                        <label for="first_name">First Name</label>
+                        {{ form.first_name }}
+                      </div>
+                  </div>
 
+                  <div class="row">
+                      <div class="col-lg-4 col-md-12 mb-4">
+                        <label for="last_name">Last Name</label>
+                        {{ form.last_name }}
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      <div class="col-lg-4 col-md-12 mb-4">
+                        <label for="delivery_option">Delivery Option</label>
+                        {{ form.delivery_option }}
+                        <div class="invalid-feedback">
+                          Please select a valid Delivery Option.
+                        </div>
+                      </div>
+                  </div>
+   
+                  <div class="row">
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <label for="delivery_address">Delivery Address</label>
+                        {{ form.delivery_address }}
+                      </div>
+                  </div>
+                  
                 <div class="row">
                   <div class="col-lg-4 col-md-12 mb-4">
                     <label for="country">Pick Up Station</label>
@@ -30,6 +56,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" name="set_default_delivery" id="set_default_delivery">
                   <label class="custom-control-label" for="set_default_delivery">Save as default delivery address</label>
@@ -64,7 +91,7 @@
         </div>
 
         <div class="col-md-4 mb-4">
-          {% include "order_snippet.html" %}
+          {% include "globalbiz/order_snippet.html" %}
         </div>
 
       </div>
