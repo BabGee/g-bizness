@@ -29,7 +29,6 @@
 									<a class="dropdown-item" href="{% url 'login' %}">Login</a>
 									{% else %}
 									<a class="dropdown-item" href="#">Orders</a>
-									<a class="dropdown-item" href="#">Saved Items</a>
 									<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
 									{% endif %}
 								</div>
@@ -40,10 +39,8 @@
 								</a>
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">About Us</a>
-									<a class="dropdown-item" href="#">Contact Us</a>
-									<a class="dropdown-item" href="#">Blog</a>
-
+									<a class="dropdown-item" href="{% url 'about-us' %}">About Us</a>
+									<a class="dropdown-item" href="{% url 'contact' %}">Contact Us</a>
 								</div>
 							</li>
 							<li class="nav-item dropdown dropdown-slide">
@@ -52,11 +49,10 @@
 								</a>
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="category.html">Help Center</a>
-									<a class="dropdown-item" href="ad-listing-list.html">How To Shop</a>
-									<a class="dropdown-item" href="ad-listing-list.html">How To Pay</a>
-									<a class="dropdown-item" href="ad-listing-list.html">Delivery Timeline</a>
-									<a class="dropdown-item" href="ad-listing-list.html">Returns & Refunds</a>
+									<a class="dropdown-item" href="{% url 'how-to-shop' %}">How To Shop</a>
+									<a class="dropdown-item" href="{% url 'how-to-pay' %}">How To Pay</a>
+									<a class="dropdown-item" href="{% url 'delivery-timeline' %}">Delivery Timeline</a>
+									<a class="dropdown-item" href="{% url 'returns-refunds' %}">Returns & Refunds</a>
 								</div>
 							</li>
 						</ul>

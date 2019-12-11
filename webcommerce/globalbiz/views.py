@@ -9,7 +9,9 @@ from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from users.forms import CheckoutForm, CouponForm
-
+import random
+import string
+from django.db.models import Q 
 
 
 def create_ref_code():
@@ -25,6 +27,35 @@ def home(request):
         'offers' : Product.objects.filter(rating__name='Offer')
     }
     return render(request, 'globalbiz/index.html', context)
+
+class SearchResultsView(ListView):
+    model = Product
+    template_name = 'globalbiz/search_results.html' 
+
+    def get_queryset(self):
+        query1 = self.request.GET.get('q1')
+        #query2 = self.request.GET.get('q2')
+
+        return Product.objects.filter( Q(title__icontains=query1)) #| Q(category__name__icontains=query2))  
+
+def about_us(request):
+    return render(request, 'globalbiz/about.html')
+
+def contact(request):
+    return render(request, 'globalbiz/contact.html')    
+
+def how_to_shop(request):
+    return render(request, 'globalbiz/howtoshop.html')
+
+def how_to_pay(request):
+    return render(request, 'globalbiz/howtopay.html')
+
+def delivery_timeline(request):
+    return render(request, 'globalbiz/timeline.html')
+
+def returns_refunds(request):
+    return render(request, 'globalbiz/refunds.html')
+
 
 class ProductList(ListView):
     model = Product
@@ -260,10 +291,10 @@ class CheckoutView(View):
                 payment_option = form.cleaned_data.get('payment_option')
 
                 if payment_option == 'M':
-                    pass
+                    return render(request, 'globalbiz/about.html')
                     #return redirect('payment', payment_option='Mpesa')
                 elif payment_option == 'P':
-                    pass
+                    return render(request, 'globalbiz/about.html')
                    # return redirect('payment', payment_option='paypal')
                 else:
                     messages.warning(

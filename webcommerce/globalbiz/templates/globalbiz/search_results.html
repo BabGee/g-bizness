@@ -6,9 +6,7 @@
 {% block title %} {{product.title}} {% endblock title %}
 
 {% block hero %} 
-<div class="container">
-    <h1>Order Summary</h1>
-</div>
+
 {% endblock hero %}
 
 {% block content %}
@@ -16,12 +14,12 @@
 <main class="mt-5 pt-4">
     <div class="container dark-grey-text mt-5">
 
+    {% for product in object_list %} 
       <!--Grid row-->
       <div class="row wow fadeIn">
 
         <!--Grid column-->
-        <div class="col-md-6 mb-4">
-
+        <div class="col-md-6 mb-4">  
           <img src="{{product.image.url}}" class="img-fluid" alt="">
           
         </div>
@@ -79,6 +77,7 @@
 
       </div>
       <!--Grid row-->
+      {% endfor %}
 
       <hr>
 

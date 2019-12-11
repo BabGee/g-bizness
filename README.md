@@ -1,3 +1,8 @@
+
+#Hosted On Heroku
+
+    https://globalbiz.herokuapp.com/
+
 #How To Run g-bizness
 
 git clone https://github.com/BabGee/g-bizness.git

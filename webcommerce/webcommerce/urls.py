@@ -29,7 +29,8 @@ from globalbiz.views import (
     remove_single_product_from_cart,
     OrderSummaryView,
     CheckoutView,
-    AddCouponView
+    AddCouponView,
+    SearchResultsView
     )
    
 
@@ -37,6 +38,7 @@ from globalbiz.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('globalbiz.urls')),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
     path('register', users_views.register, name='register'),
     path('login', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
