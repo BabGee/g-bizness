@@ -45,7 +45,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('products/', ProductList.as_view(template_name='globalbiz/productlist.html')),
     path('products/<int:pk>/', productdetail, name='product-detail'),
-    path('categorys/', CategoryList.as_view(template_name='globalbiz/categorylist.html')),
+    path('categorys/', CategoryList.as_view(template_name='globalbiz/categorylist.html'), name='category'),
     path('categorys/<int:pk>/', categorydetail, name='category-detail'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('add-to-cart/<int:pk>/', add_to_cart, name='add-to-cart'),

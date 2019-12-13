@@ -35,10 +35,10 @@
             </td>
             <td>
             {% if order_product.product.discount_price %}
-                ${{ order_product.get_total_discount_product_price }}
+                KSHS {{ order_product.get_total_discount_product_price }}
                 <span class="badge badge-primary">Saving Kshs {{ order_product.get_amount_saved }}</span>
             {% else %}
-                ${{ order_product.get_total_product_price }}
+                KSHS {{ order_product.get_total_product_price }}
             {% endif %}
             <a style='color: red;' href="{% url 'remove-from-cart' order_product.product.pk %}">
                 <i class="fas fa-trash float-right"></i>
@@ -58,13 +58,13 @@
         {% if object.coupon %}
         <tr>
             <td colspan="4"><b>Coupon</b></td>
-            <td><b>-${{ object.coupon.amount }}</b></td>
+            <td><b>-KSHS {{ object.coupon.amount }}</b></td>
         </tr>
         {% endif %}
         {% if object.get_total %}
         <tr>
             <td colspan="4"><b>Order Total</b></td>
-            <td><b>${{ object.get_total }}</b></td>
+            <td><b>KSHS {{ object.get_total }}</b></td>
         </tr>
         <tr>
             <td colspan="5">

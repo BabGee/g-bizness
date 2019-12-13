@@ -28,15 +28,26 @@ def home(request):
     }
     return render(request, 'globalbiz/index.html', context)
 
-class SearchResultsView(ListView):
-    model = Product
-    template_name = 'globalbiz/search_results.html' 
+class SearchResultsView(View):
+    # model = Product
+    # template_name = 'globalbiz/search_results.html'
 
-    def get_queryset(self):
+    def get(self, *args, **kwargs):
         query1 = self.request.GET.get('q1')
         #query2 = self.request.GET.get('q2')
+        if query1:
+            context = {
+                'search_query_rslt' : Product.objects.filter(Q(title__icontains=query1))
+            }
+            return render(self.request, 'globalbiz/search_results.html', context) 
+        elif query1 is None:
+            messages.warning(self.request, f'Sorry No Product named {query1}')
+            return redirect('/')
+        else:
+            messages.warning(self.request, 'You havent Searched for any Product')
+            return redirect('/')
 
-        return Product.objects.filter( Q(title__icontains=query1)) #| Q(category__name__icontains=query2))  
+
 
 def about_us(request):
     return render(request, 'globalbiz/about.html')
