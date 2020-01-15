@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from category.models import Category
 from product.models import Product, Order, OrderProduct
 from users.models import Address, Coupon
@@ -17,7 +18,6 @@ from django.db.models import Q
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
 
-
 #******************pages.html ***********************************
 def home(request):
     context = {
@@ -33,21 +33,23 @@ class SearchResultsView(View):
     # template_name = 'globalbiz/search_results.html'
 
     def get(self, *args, **kwargs):
-        query1 = self.request.GET.get('q1')
-        #query2 = self.request.GET.get('q2')
-        if query1:
-            context = {
-                'search_query_rslt' : Product.objects.filter(Q(title__icontains=query1))
-            }
-            return render(self.request, 'globalbiz/search_results.html', context) 
-        elif query1 is None:
-            messages.warning(self.request, f'Sorry No Product named {query1}')
+        qs =  Product.objects.all()
+        query1 = self.request.GET.get('qproduct')
+        qs = qs.filter(Q(title__icontains=query1))
+        #query2 = self.request.GET.get('q2'), Product.objects.filter(Q(title__icontains=query1))!= '' and query1 is not None:
+        if query1: 
+            qs = qs.filter(Q(title__icontains=query1))
+        if query1 == '':
+            messages.warning(self.request, 'No Product selected')
             return redirect('/')
-        else:
-            messages.warning(self.request, 'You havent Searched for any Product')
+        if qs is None:
+            messages.warning(self.request, f'No Product Named{query1}')
             return redirect('/')
 
-
+        context = {
+            'search_query_rslt' : qs
+        }
+        return render(self.request, 'globalbiz/search_results.html', context) 
 
 def about_us(request):
     return render(request, 'globalbiz/about.html')
@@ -252,14 +254,12 @@ class CheckoutView(View):
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             if form.is_valid():
-
                 use_default_delivery = form.cleaned_data.get(
                     'use_default_delivery')
                 if use_default_delivery:
                     print("Using the default delivery address")
                     address_qs = Address.objects.filter(
-                        user=self.request.user,
-    
+                        user=self.request.user,    
                         default=True
                     )
                     if address_qs.exists():
@@ -276,12 +276,15 @@ class CheckoutView(View):
                         'delivery_address')
                     delivery_station = form.cleaned_data.get(
                         'delivery_station')
+                    mobi_number = form.cleaned_data.get(
+                        'mobi_number')    
 
-                    if is_valid_form([delivery_address, delivery_station]):
+                    if is_valid_form([delivery_address, delivery_station, mobi_number]):
                         delivery_address = Address(
                             user=self.request.user,
-                            street_address=delivery_address,
-                            station=delivery_station
+                            delivery_address=delivery_address,
+                            shipping_station=delivery_station,
+                            mobi_number=mobi_number
                         )
                         delivery_address.save()
 
@@ -302,11 +305,13 @@ class CheckoutView(View):
                 payment_option = form.cleaned_data.get('payment_option')
 
                 if payment_option == 'M':
-                    return render(request, 'globalbiz/about.html')
+                    return redirect(reverse('globalbiz-home'))
                     #return redirect('payment', payment_option='Mpesa')
                 elif payment_option == 'P':
-                    return render(request, 'globalbiz/about.html')
-                   # return redirect('payment', payment_option='paypal')
+                    self.request.session['order_id'] = order.id
+                    return redirect(reverse('payment:process'))
+                    messages.add_message(self.request, messages.INFO, 'Order Placed!')
+                    return redirect('checkout')
                 else:
                     messages.warning(
                         self.request, "Invalid payment option selected")

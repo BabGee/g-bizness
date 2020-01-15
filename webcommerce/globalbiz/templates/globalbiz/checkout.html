@@ -49,14 +49,14 @@
 
                   <div class="row">
                     <div class="col-lg-4 col-md-6 mb-4">
-                      <label for="delivery_address">Mobile Number</label>
+                      <label for="mobi_number">Mobile Number</label>
                       {{ form.mobi_number }}
                     </div>
                 </div>
                   
                 <div class="row">
                   <div class="col-lg-4 col-md-12 mb-4">
-                    <label for="country">Pick Up Station</label>
+                    <label for="delivery_station">Pick Up Station</label>
                     {{ form.delivery_station }}
                     <div class="invalid-feedback">
                       Please select a valid Station.
@@ -74,7 +74,7 @@
               {% if default_delivery_address %}
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" name="use_default_delivery" id="use_default_delivery">
-                <label class="custom-control-label" for="use_default_delivery">Use default delivery address: {{ default_delivery_address.street_address|truncatechars:10 }}</label>
+                <label class="custom-control-label" for="use_default_delivery">Use default delivery address: {{ default_delivery_address.delivery_address|truncatechars:10 }}</label>
               </div>
               {% endif %}
 

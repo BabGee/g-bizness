@@ -37,7 +37,6 @@ class Product(models.Model):
             'pk': self.pk
         })
 
-
 class OrderProduct(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
@@ -61,12 +60,11 @@ class OrderProduct(models.Model):
             return self.get_total_discount_product_price()
         return self.get_total_product_price()
 
-
 class Order(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     ref_code = models.CharField(max_length=20, blank=True, null=True)
     products = models.ManyToManyField(OrderProduct)
-    start_date = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField(auto_now_add=True) 
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
 

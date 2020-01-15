@@ -333,6 +333,11 @@ button {
   font-size: 30px;
   letter-spacing: 0.05em;
   text-align: center;
+  color: #e9f3f3;
+}
+
+.section-title h3 {
+  color: #151818;
 }
 
 .section-title h2:before {
@@ -364,7 +369,7 @@ button {
 .section-title p {
   font-size: 18px;
   line-height: 30px;
-  color: #848484;
+  color: #e9f3f3;
 }
 
 .user-profile, .dashboard {
@@ -631,17 +636,17 @@ ul.pagination .active a {
 }
 
 .bg-gray {
-  background: #F5F5F5;
+  background: rgb(50, 11, 58);
 }
 
 .bg-1 {
-  background: url("../images/mann.jpg");
+  background: url("../images/tft.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .bg-2 {
-  background: url("../images/mann.jpg");
+  background: url("../images/tft.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
