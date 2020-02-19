@@ -1,102 +1,103 @@
-{% load static %}
+ {% load static %}   
+    <!-- Footer section -->
+	<section class="footer-section">
+		<div class="container">
+			<!--
+			<div class="footer-logo text-center">
+				<a href="/"><img src="{% static 'globalbiz/img/logo-light.png' %}" alt=""></a>
+			</div>-->
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>About</h2>
+						<p>G-Cart is an E-Commerce website.</p>
+						<img src="{% static 'globalbiz/img/cards.png' %}" alt="">
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Questions</h2>
+						<ul>
+							<li><a href="">About Us</a></li>
+							<li><a href="">Track Orders</a></li>
+							<li><a href="">Returns</a></li>
+							<li><a href="">Jobs</a></li>
+							<li><a href="">Shipping</a></li>
+							<li><a href="{% url 'contact' %}">Contact</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Partners</a></li>
+							<li><a href="">Bloggers</a></li>
+							<li><a href="">Support</a></li>
+							<li><a href="">Terms of Use</a></li>
+							<li><a href="">Press</a></li>
+							<li><a href="/admin">Admin</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Questions</h2>
+						<div class="fw-latest-post-widget">
+							<div class="lp-item">
+								<div class="lp-thumb set-bg" data-setbg="{% static 'globalbiz/img/blog-thumbs/1.jpg"></div>
+								<div class="lp-content">
+									<h6>what shoes to wear</h6>
+									<span>Oct 21, 2018</span>
+									<a href="#" class="readmore">Read More</a>
+								</div>
+							</div>
+							<div class="lp-item">
+								<div class="lp-thumb set-bg" data-setbg="{% static 'globalbiz/img/blog-thumbs/2.jpg"></div>
+								<div class="lp-content">
+									<h6>trends this year</h6>
+									<span>Oct 21, 2018</span>
+									<a href="#" class="readmore">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget contact-widget">
+						<h2>Questions</h2>
+						<div class="con-info">
+							<span>C.</span>
+							<p>G-Cart Ltd </p>
+						</div>
+						<div class="con-info">
+							<span>B.</span>
+							<p>Malindi Road, Pwani University Towers</p>
+						</div>
+						<div class="con-info">
+							<span>T.</span>
+							<p>+254 723562087</p>
+						</div>
+						<div class="con-info">
+							<span>E.</span>
+							<p>startsstartapp@gcart.com</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="social-links-warp">
+			<div class="container">
+				<div class="social-links">
+					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+				</div>
 
-<!--============================
-=            Footer            =
-=============================-->
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
+<p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">JG</a></p>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-<footer class="footer section section-sm">
-    <!-- Container Start -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
-          <!-- About -->
-          <div class="block about">
-            <!-- footer logo -->
-            <img src="{% static 'globalbiz/images/gb.png' %}" alt="" height="70" width="80">
-            <!-- description -->
-            <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-        </div>
-        <!-- Link list -->
-        <div class="col-lg-2 offset-lg-1 col-md-3">
-          <div class="block">
-            <h4>Site Pages</h4>
-            <ul>
-              <li><a href="#">Boston</a></li>
-              <li><a href="#">How It works</a></li>
-              <li><a href="#">Deals & Coupons</a></li>
-              <li><a href="#">Articls & Tips</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- Link list -->
-        <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
-          <div class="block">
-            <h4>Admin Pages</h4>
-            <ul>
-              <li><a href="{% url 'category' %}">Category</a></li>
-              <li><a href="#">Single Page</a></li>
-              <li><a href="#">Store Single</a></li>
-              </li>
-              <li><a href="blog.html">Blog</a></li>
-  
-  
-  
-            </ul>
-          </div>
-        </div>
-        <!-- Promotion -->
-        <div class="col-lg-4 col-md-7">
-          <!-- App promotion -->
-          <div class="block-2 app-promotion">
-            <div class="mobile d-flex">
-              <a href="">
-                <!-- Icon -->
-                <i class="fab fa-facebook-square"></i>
-              </a>
-              <p>Get the Global Biz Mobile App and Save more</p>
-            </div>
-            <div class="download-btn d-flex my-3">
-              <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-              <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Container End -->
-  </footer>
-  <!-- Footer Bottom -->
-  <footer class="footer-bottom">
-    <!-- Container Start -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-12">
-          <!-- Copyright -->
-          <div class="copyright">
-            <p>Copyright © <script>
-                var CurrentYear = new Date().getFullYear()
-                document.write(CurrentYear)
-              </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a></p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-12">
-          <!-- Social Icons -->
-          <ul class="social-media-icons text-right">
-            <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
-            <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
-            <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
-            <li><a class="fa fa-vimeo" href=""></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Container End -->
-    <!-- To Top -->
-    <div class="top-to">
-      <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
-    </div>
-  </footer>
+			</div>
+		</div>
+	</section>
+	<!-- Footer section end -->

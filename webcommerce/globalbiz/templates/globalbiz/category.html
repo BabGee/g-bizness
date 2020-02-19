@@ -1,135 +1,119 @@
-{% extends "globalbiz/base.html" %}
+{% extends 'globalbiz/base.html' %}
 
 {% load static %}
-
-{% block title %} {{newProducts.name}} {% endblock title %}
-
-
-{% block hero %} 
-<section class="hero-area bg-1 text-center overly">
-	<!-- Container Start -->
-	<div class="container">
-		<h1 class="font-weight-bold white-text">{{newProducts.name}}</h1>
-	</div>
-	<!-- Container End -->
-</section>
-{% endblock hero %}
+{% load humanize %}
 
 {% block content %}
 
-<!--===========================================
-=            Popular deals section            =
-============================================-->
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>{{category}} Page</h4>
+			<div class="site-pagination">
+				<a href="{% url 'globalbiz-home' %}">Home</a> /
+				<a href="">{{category}}</a> /
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
 
-<section class="popular-deals section bg-gray">
-	<div class="container">
+
+	<!-- Category section -->
+	<section class="category-section spad">
+		<div class="container">
 			<div class="row">
-					<div class="col-md-12">
-						<div class="section-title">
-							<h2>New</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+				<div class="col-lg-3 order-2 order-lg-1">
+					<div class="filter-widget">
+						<h2 class="fw-title">Categories</h2>
+						<ul class="category-menu">
+							{% for cat in other_cats %}
+							<li><a href="{% url 'category-detail' pk=cat.id %}">{{cat.name}}</a>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="filter-widget mb-0">
+						<h2 class="fw-title">refine by</h2>
+						<div class="price-range-wrap">
+							<h4>Price</h4>
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="270">
+								<div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+								<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;">
+								</span>
+								<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;">
+								</span>
+							</div>
+							<div class="range-slider">
+                                <div class="price-input">
+                                    <input type="text" id="minamount">
+                                    <input type="text" id="maxamount">
+                                </div>
+                            </div>
+                        </div>
+					</div>
+					<div class="filter-widget mb-0">
+						<h2 class="fw-title">Size</h2>
+						<div class="fw-size-choose">
+							<div class="sc-item">
+								<input type="radio" name="sc" id="xs-size">
+								<label for="xs-size">XS</label>
+							</div>
+							<div class="sc-item">
+								<input type="radio" name="sc" id="s-size">
+								<label for="s-size">S</label>
+							</div>
+							<div class="sc-item">
+								<input type="radio" name="sc" id="m-size"  checked="">
+								<label for="m-size">M</label>
+							</div>
+							<div class="sc-item">
+								<input type="radio" name="sc" id="l-size">
+								<label for="l-size">L</label>
+							</div>
+							<div class="sc-item">
+								<input type="radio" name="sc" id="xl-size">
+								<label for="xl-size">XL</label>
+							</div>
+							<div class="sc-item">
+								<input type="radio" name="sc" id="xxl-size">
+								<label for="xxl-size">XXL</label>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+					<div class="row">
+						{% for product in products_with_category %}
+						<div class="col-lg-4 col-sm-6">
+							<div class="product-item">
+								<div class="pi-pic">
+									<div class="tag-sale">{{product.rating}}</div>
+									<a href="{% url 'product-detail' pk=product.id %}">
+										<img src="{{product.image.url}}" alt="">
+									</a>	
+									<div class="pi-links">
+										<a href="{{ product.get_add_to_cart_url }}"" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+									</div>
+								</div>
+								<div class="pi-text">
+									<h6>Kshs {{product.price |intcomma }}</h6>
+									<p>{{product.title}}</p>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						<div class="text-center w-100 pt-3">
+							<button class="site-btn sb-line sb-dark">LOAD MORE</button>
 						</div>
 					</div>
 				</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="trending-ads-slide">
-							{% for new in new_products_with_category %}
-							<div class="col-sm-12 col-lg-4">
-								<div class="product-item bg-light">
-									<div class="card">
-										<div class="thumb-content">
-											<a href="{% url 'product-detail' pk=new.id %}">
-												<img class="card-img-top img-fluid" src="{{new.image.url}}" alt="">
-											</a>
-										</div>
-										<div class="card-body">
-											<h4 class="card-title"><a href="{% url 'product-detail' pk=new.id %}">{{new.title}}</a></h4>
-											<ul class="list-inline product-meta">
-												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{new.category.name}}</a>
-												</li>
-												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{new.rating.name}}</a>
-												</li>
-											</ul>
-											
-											<h4 class="font-weight-bold blue-text">
-												{% if new.discount_price %}
-												<span class="mr-1">
-													<del>Kshs {{ new.price }}</del>
-												</span>
-												<span>Kshs {{ new.discount_price }}</span>
-												{% else %}
-												<span>Kshs {{ new.price }}</span>
-												{% endif %}
-											</h4>
-											<a href="{% url 'product-detail' pk=new.id %}" class="btn btn-primary">View Details</a>
-										</div>		
-									</div>	
-								</div>		
-							</div>
-							{% endfor %}	
-					</div>				
-				</div>	
 			</div>
-	</div>
-</section>
-
-<section class="popular-deals section bg-gray">
-	<div class="container">
-			<div class="row">
-					<div class="col-md-12">
-						<div class="section-title">
-							<h2>Offers</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
-						</div>
-					</div>
-				</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="trending-ads-slide">
-							{% for offer in offer_products_with_category %}
-							<div class="col-sm-12 col-lg-4">
-								<div class="product-item bg-light">
-									<div class="card">
-										<div class="thumb-content">
-											<a href="{% url 'product-detail' pk=offer.id %}">
-												<img class="card-img-top img-fluid" src="{{offer.image.url}}" alt="">
-											</a>
-										</div>
-										<div class="card-body">
-											<h4 class="card-title"><a href="{% url 'product-detail' pk=offer.id %}">{{offer.title}}</a></h4>
-											<ul class="list-inline product-meta">
-												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{offer.category.name}}</a>
-												</li>
-												<li class="list-inline-item">
-													<a href="#"><i class="fa fa-folder-open-o"></i>{{offer.rating.name}}</a>
-												</li>
-											</ul>
-											
-											<h4 class="font-weight-bold blue-text">
-												{% if offer.discount_price %}
-												<span class="mr-1">
-													<del>Kshs {{ offer.price }}</del>
-												</span>
-												<span>Kshs {{ offer.discount_price }}</span>
-												{% else %}
-												<span>Kshs {{ offer.price }}</span>
-												{% endif %}
-											</h4>
-											<a href="{% url 'product-detail' pk=offer.id %}" class="btn btn-primary">View Details</a>
-										</div>		
-									</div>	
-								</div>		
-							</div>
-							{% endfor %}	
-					</div>				
-				</div>	
-			</div>
-	</div>
-</section>
+		</div>
+	</section>
+	<!-- Category section end -->
+{% endblock %}
 
 
-{% endblock content %}
+
+

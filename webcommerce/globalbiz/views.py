@@ -20,11 +20,13 @@ def create_ref_code():
 
 #******************pages.html ***********************************
 def home(request):
+    products = Product.objects.all()
     context = {
-        'products' : Product.objects.all(), 
+        'products' : products, 
         'categories': Category.objects.all(),
-        'newProducts' : Product.objects.filter(rating__name='New'),
-        'offers' : Product.objects.filter(rating__name='Offer')
+        'newProducts' : Product.objects.filter(rating__name='New')[2:],
+        '2newProducts' : Product.objects.filter(rating__name='New')[:2],
+        'newProduct' : Product.objects.filter(rating__name='New').first()
     }
     return render(request, 'globalbiz/index.html', context)
 
@@ -35,14 +37,14 @@ class SearchResultsView(View):
     def get(self, *args, **kwargs):
         qs =  Product.objects.all()
         query1 = self.request.GET.get('qproduct')
-        qs = qs.filter(Q(title__icontains=query1))
+        #qs = qs.filter(Q(title__icontains=query1))
         #query2 = self.request.GET.get('q2'), Product.objects.filter(Q(title__icontains=query1))!= '' and query1 is not None:
         if query1: 
             qs = qs.filter(Q(title__icontains=query1))
         if query1 == '':
             messages.warning(self.request, 'No Product selected')
             return redirect('/')
-        if qs is None:
+        if query1 is None:
             messages.warning(self.request, f'No Product Named{query1}')
             return redirect('/')
 
@@ -55,27 +57,21 @@ def about_us(request):
     return render(request, 'globalbiz/about.html')
 
 def contact(request):
-    return render(request, 'globalbiz/contact.html')    
-
-def how_to_shop(request):
-    return render(request, 'globalbiz/howtoshop.html')
-
-def how_to_pay(request):
-    return render(request, 'globalbiz/howtopay.html')
-
-def delivery_timeline(request):
-    return render(request, 'globalbiz/timeline.html')
-
-def returns_refunds(request):
-    return render(request, 'globalbiz/refunds.html')
-
+    context = {
+        'offer_products' : Product.objects.filter(rating__name='Offer')[:4],
+        'prod' : Product.objects.filter(rating__name='Offer').first()
+    }
+    return render(request, 'globalbiz/contact.html', context)    
 
 class ProductList(ListView):
     model = Product
 
 def productdetail(request,pk):
+    product = Product.objects.get(pk = pk)
+    cat = product.category
     context = {
-        'product': Product.objects.get(pk = pk)
+        'product': product,
+        'related_prod' : Product.objects.filter(category__name=cat)
     }
     return render(request, 'globalbiz/product.html', context)
 
@@ -84,9 +80,11 @@ class CategoryList(ListView):
 
 def categorydetail(request,pk):
     cat = Category.objects.get(pk = pk)
+    cats = Category.objects.all()
     context = {
-        'new_products_with_category': Product.objects.filter(category__name = cat, rating__name='New'),
-        'offer_products_with_category': Product.objects.filter(category__name = cat, rating__name='Offer')
+        'products_with_category': Product.objects.filter(category__name = cat),
+        'category' : cat,
+        'other_cats' : cats
     }
     
     return render(request, 'globalbiz/category.html', context)
@@ -308,10 +306,11 @@ class CheckoutView(View):
                     return redirect(reverse('globalbiz-home'))
                     #return redirect('payment', payment_option='Mpesa')
                 elif payment_option == 'P':
-                    self.request.session['order_id'] = order.id
-                    return redirect(reverse('payment:process'))
-                    messages.add_message(self.request, messages.INFO, 'Order Placed!')
-                    return redirect('checkout')
+                    print('Hey')
+                    #self.request.session['order_id'] = order.id
+                    #return redirect(reverse('payment:process'))
+                    #messages.add_message(self.request, messages.INFO, 'Order Placed!')
+                    #return redirect('checkout')
                 else:
                     messages.warning(
                         self.request, "Invalid payment option selected")

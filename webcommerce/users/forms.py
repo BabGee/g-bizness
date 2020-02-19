@@ -18,9 +18,6 @@ STATION_CHOICES = (
     ('WS', 'WESTLANDS'),
 	('JG', 'UCHUMI JOGOO ROAD'),
 	('GC', 'GARDEN CITY'),
-	('MS', 'MOMBASA CBD'),
-	('KS', 'KISUMU CBD'),
-	('NK', 'NAKURU'),
 )	
 
 

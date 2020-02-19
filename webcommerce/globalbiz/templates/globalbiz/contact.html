@@ -1,20 +1,83 @@
-{% extends "globalbiz/base.html" %}
+{% extends 'globalbiz/base.html' %}
 
 {% load static %}
 
-{% block title %} Contact Us {% endblock title %}
-
-
-{% block hero %} 
-<section class="hero-area bg-1 text-center overly">
-	<!-- Container Start -->
-	<div class="container">
-		<h1 class="font-weight-bold white-text">Contact Us</h1>
-	</div>
-	<!-- Container End -->
-</section>
-{% endblock hero %}
-
 {% block content %}
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Contact</h4>
+			<div class="site-pagination">
+				<a href="{% url 'globalbiz-home' %}">Home</a> /
+				<a href="">Contact</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
 
-{% endblock content %}
+
+	<!-- Contact section -->
+	<section class="contact-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 contact-info">
+					<h3>Get in touch</h3>
+					<p>Malindi Highway, Pwani Towers, Kilifi</p>
+					<p>+254 723 562 087</p>
+					<p>webcomm@g-cart.com</p>
+					<div class="contact-social">
+						<a href="#"><i class="fa fa-pinterest"></i></a>
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-behance"></i></a>
+					</div>
+					<form class="contact-form">
+						<input type="text" placeholder="Your name">
+						<input type="text" placeholder="Your e-mail">
+						<input type="text" placeholder="Subject">
+						<textarea placeholder="Message"></textarea>
+						<button class="site-btn">SEND NOW</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14376.077865872314!2d-73.879277264103!3d40.757667781624285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1546528920522" style="border:0" allowfullscreen></iframe></div>
+	</section>
+	<!-- Contact section end -->
+
+
+	<!-- Related product section -->
+	<section class="related-product-section spad">
+		<div class="container">
+			<div class="section-title">
+				<h2>Your Favorites</h2>
+			</div>
+			<div class="row">
+				{% for product in offer_products %}
+				<div class="col-lg-3 col-sm-6">
+					<div class="product-item">
+						<div class="pi-pic">
+							<div class="tag-new">{{prod.rating}}</div>
+							<a href="{% url 'product-detail' pk=product.id %}">
+								<img src="{{product.image.url}}" alt="">
+							</a>	
+							<div class="pi-links">
+								<a href="{{ product.get_add_to_cart_url }}" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+							</div>
+						</div>
+						<div class="pi-text">
+							<h6>{{product.price}}</h6>
+							<p>{{product.title}}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Related product section end -->
+
+
+	{% endblock %}
+

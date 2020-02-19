@@ -1,86 +1,170 @@
-
 {% extends "globalbiz/base.html" %}
 
 {% load static %}
-
-{% block title %} {{product.title}} {% endblock title %}
-
-{% block hero %} 
-
-{% endblock hero %}
+{% load humanize %}
 
 {% block content %}
-  
-<main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-
-          <img src="{{product.image.url}}" class="img-fluid" alt="">
-          
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-
-          <!--Content-->
-          <div class="p-4">
-
-            <div class="mb-3">
-              <a href="">
-                <span class="badge purple mr-1">{{ product.title}}</span>
-              </a>
-            </div>
-
-            <p class="lead">
-              {% if product.discount_price %}
-              <span class="mr-1">
-                <del>Kshs {{ product.price }}</del>
-              </span>
-              <span>Kshs {{ product.discount_price }}</span>
-              {% else %}
-              <span>Kshs {{ product.price }}</span>
-              {% endif %}
-            </p>
-
-            <p class="lead font-weight-bold">Description</p>
-
-            <p>{{ product.description }}</p>
-
-            {% comment %} <form class="d-flex justify-content-left">
-              <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" type="submit">
-                Add to cart
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </button>
-
-            </form> {% endcomment %}
-            <a href="{{ product.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
-              Add to cart
-              <i class="fas fa-shopping-cart ml-1"></i>
-            </a>
-            <a href="{{ product.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
-              Remove from cart
-            </a>
-
-          </div>
-          <!--Content-->
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-      <hr>
-    </div>
-  </main>
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Product Details</h4>
+			<div class="site-pagination">
+				<a href="{% url 'globalbiz-home' %}">Home</a> /
+				<a href="">{{product.title}}</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
 
 
-{% endblock content %}
+	<!-- product section -->
+	<section class="product-section">
+		<div class="container">
+			<div class="back-link">
+				<a href="{% url 'globalbiz-home' %}"> &lt;&lt; Back to Shopping</a>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="product-pic-zoom">
+						<img class="product-big-img" src="{{product.image.url}}" alt="">
+					</div>
+					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+						<div class="product-thumbs-track">
+							<div class="pt active" data-imgbigurl="{{product.image.url}}"><img src="{{product.image.url}}" alt=""></div>
+							<div class="pt" data-imgbigurl="{{product.image.url}}"><img src="{{product.image.url}}" alt=""></div>
+							<div class="pt" data-imgbigurl="{{product.image.url}}"><img src="{{product.image.url}}" alt=""></div>
+							<div class="pt" data-imgbigurl="{{product.image.url}}"><img src="{{product.image.url}}" alt=""></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 product-details">
+					<h2 class="p-title">{{product.title}}</h2>
+					<h3 class="p-price">
+						{% if product.discount_price %}
+							<span class="mr-1">
+								<del>Kshs {{ product.price|intcomma }}</del>
+							</span>
+							<span>Kshs {{ product.discount_price|intcomma }}</span>
+						{% else %}
+							<span>Kshs {{ product.price|intcomma }}</span>
+						{% endif %}
+					</h3>
+					<h4 class="p-stock">Available: <span>In Stock</span></h4>
+					<div class="p-rating">
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o fa-fade"></i>
+					</div>
+					<!-- 
+					<div class="p-review">
+						<a href="">3 reviews</a>|<a href="">Add your review</a>
+					</div>
+					 
+					<div class="fw-size-choose">
+						<p>Size</p>
+						<div class="sc-item">
+							<input type="radio" name="sc" id="xs-size">
+							<label for="xs-size">32</label>
+						</div>
+						<div class="sc-item">
+							<input type="radio" name="sc" id="s-size">
+							<label for="s-size">34</label>
+						</div>
+						<div class="sc-item">
+							<input type="radio" name="sc" id="m-size" checked="">
+							<label for="m-size">36</label>
+						</div>
+						<div class="sc-item">
+							<input type="radio" name="sc" id="l-size">
+							<label for="l-size">38</label>
+						</div>
+						<div class="sc-item disable">
+							<input type="radio" name="sc" id="xl-size" disabled>
+							<label for="xl-size">40</label>
+						</div>
+						<div class="sc-item">
+							<input type="radio" name="sc" id="xxl-size">
+							<label for="xxl-size">42</label>
+						</div>
+					</div>
+				-->
+					<a href="{{ product.get_add_to_cart_url }}" class="site-btn">SHOP NOW</a>
+					<div id="accordion" class="accordion-area">
+						<div class="panel">
+							<div class="panel-header" id="headingOne">
+								<button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">information</button>
+							</div>
+							<div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="panel-body">
+									<p>{{product.description}}</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="panel-header" id="headingThree">
+								<button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">shipping & Returns</button>
+							</div>
+							<div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+								<div class="panel-body">
+									<h4>7 Days Returns</h4>
+									<p>Cash on Delivery Available<br>Home Delivery <span>3 - 4 days</span></p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="social-sharing">
+						<a href=""><i class="fa fa-google-plus"></i></a>
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- product section end -->
+
+
+	<!-- RELATED PRODUCTS section -->
+	<section class="related-product-section">
+		<div class="container">
+			<div class="section-title">
+				<h2>RELATED PRODUCTS</h2>
+			</div>
+			<div class="product-slider owl-carousel">
+				{% for product in related_prod %}
+				<div class="product-item">
+					<div class="pi-pic">
+						<a href="{% url 'product-detail' pk=product.id %}">
+							<img src="{{product.image.url}}" alt="">
+						</a>
+						<div class="pi-links">
+							<a href="{{ product.get_add_to_cart_url }}" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+						</div>
+					</div>
+					<div class="pi-text">
+						<h6>
+							{% if product.discount_price %}
+								<span class="mr-1">
+									<del>Kshs {{ product.price |intcomma }}</del>
+								</span>
+								<span>Kshs {{ product.discount_price |intcomma }}</span>
+							{% else %}
+								<span>Kshs {{ product.price |intcomma  }}</span>
+							{% endif %}
+						</h6>
+						<p>{{product.title}} </p>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- RELATED PRODUCTS section end -->
+
+
+{% endblock %}

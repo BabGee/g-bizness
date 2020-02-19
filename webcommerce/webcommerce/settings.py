@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'product',
     'category',
     'paypal.standard.ipn',
-    'payment.apps.PaymentConfig'
+    'payment.apps.PaymentConfig',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

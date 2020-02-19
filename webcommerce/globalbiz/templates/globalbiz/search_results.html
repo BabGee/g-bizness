@@ -2,6 +2,7 @@
 {% extends "globalbiz/base.html" %}
 
 {% load static %}
+{% load humanize %}
 
 {% block title %} {{product.title}} {% endblock title %}
 
@@ -40,11 +41,11 @@
             <p class="lead">
               {% if product.discount_price %}
               <span class="mr-1">
-                <del>Kshs {{ product.price }}</del>
+                <del>Kshs {{ product.price|intcomma  }}</del>
               </span>
-              <span>Kshs {{ product.discount_price }}</span>
+              <span>Kshs {{ product.discount_price|intcomma  }}</span>
               {% else %}
-              <span>Kshs {{ product.price }}</span>
+              <span>Kshs {{ product.price|intcomma  }}</span>
               {% endif %}
             </p>
 
@@ -80,6 +81,8 @@
       {% endfor %}
     </div>
   </main>
+
+ 
 
 
 {% endblock content %}
