@@ -1,3 +1,9 @@
+## Screenshots
+
+![gbiz (3)](https://user-images.githubusercontent.com/39271713/75101238-4c5b9500-55ea-11ea-82ff-2d900d60ebea.png)
+
+![chkt](https://user-images.githubusercontent.com/39271713/75101250-6b5a2700-55ea-11ea-9bac-9c7dcfcc7dd4.png)
+
 
 # g-bizness
 
