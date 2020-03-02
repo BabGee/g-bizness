@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['jeremih.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,14 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #my apps
-    #'globalbiz.apps.GlobalbizConfig',
-    'globalbiz',
-    'users',
-    'crispy_forms',
-    'product',
-    'category',
-    'paypal.standard.ipn',
+    'globalbiz.apps.GlobalbizConfig',
+    'users.apps.UsersConfig',
+    'product.apps.ProductConfig',
+    'category.apps.CategoryConfig',
     'payment.apps.PaymentConfig',
+    #other required packages
+    'paypal.standard.ipn',
+    'crispy_forms',
     'django.contrib.humanize',
 ]
 
@@ -142,5 +142,5 @@ LOGIN_REDIRECT_URL = 'globalbiz-home'
 LOGIN_URL = 'login'
 
 #django-paypal settings
-PAYPAL_RECEIVER_EMAIL = 'startstartapp@gmail.com'
-PAYPAL_TEST = True
+PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL')
+PAYPAL_TEST = config('PAYPAL_TEST', cast=bool)
