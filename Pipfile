@@ -4,32 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-asgiref = "==3.2.3"
-astroid = "==2.3.3"
-certifi = "==2019.11.28"
-chardet = "==3.0.4"
-colorama = "==0.4.1"
-django = "==3.0.3"
-django-crispy-forms = "==1.8.0"
-django-ipware = "==2.1.0"
-django-paypal = "==0.2.5"
-idna = "==2.8"
-isort = "==4.3.21"
-lazy-object-proxy = "==1.4.3"
-mccabe = "==0.6.1"
-psycopg2 = "==2.8.4"
-pylint = "==2.4.3"
-python-decouple = "==3.3"
-pytz = "==2019.3"
-requests = "==2.22.0"
-six = "==1.13.0"
-south = "==1.0.2"
-sqlparse = "==0.3.0"
-urllib3 = "==1.25.7"
-wrapt = "==1.11.2"
-Pillow = "==6.2.1"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3"
+
+

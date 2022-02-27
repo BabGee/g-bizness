@@ -19,7 +19,6 @@ from users import views as users_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
-from django.conf.urls import url
 from globalbiz.views import (
     ProductList,
     productdetail,
@@ -39,7 +38,7 @@ app_name = 'payment'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('paypal', include('paypal.standard.ipn.urls')),
+    # path('paypal', include('paypal.standard.ipn.urls')),
     path('payment/', include(('payment.urls', 'payment'), namespace='payment')),
     #url(r'^payment/', include('payment.urls', namespace='payment')),
     #url(r'payment/', include(('payment.urls', 'payment'), namespace='payment')),

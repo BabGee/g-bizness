@@ -15,9 +15,6 @@ https://loxpack.pythonanywhere.com/
 The application allows users add to cart products and checkout. It allows admins to add different Categories and products in the backend. 
 
 
-:loudspeaker:
-**Notice:** This project has been initiated while learning Python 3 and the Django framework. The purpose of this project is purely for me the opportunity to learn coding and designing a e- commerce web system and eventually to experience the challenges a full stack developer might face in its day job. It is still under development and all features are not completed yet! If you notice any coding error or security issue or if you have recommendations on design, coding or recommendations in general do not hesitate to contact me. 
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See installing instructions for notes on how to deploy the project on a live system.
@@ -27,23 +24,65 @@ These instructions will get you a copy of the project up and running on your loc
 
 * Payment intergration
 
-### Prerequisites
-You will find hereafter what I use to develop and to run the project
-* Python 3.8
-* Django 3.0.3
-* Virtualenv (not mandatory but highly recommended)
+### Installation
 
-### Installing
-Get a local copy of the project directory by cloning "g-bizness" from github. `git clone https://github.com/BabGee/g-bizness.git`
-I use Virtualenv for developing this project so I recommend you to create a virtual environment, `virtualenv venv`, activate the virtual environment `source venv/Scripts/activate`  and to install the requirements `pip install -r requirements.txt`.
+Get a local copy of the project directory by cloning "smart-parking-management" from github.
+
+```bash
+git clone https://github.com/BabGee/g-bizness.git
+```
+
+cd into the folder
+
+```bash
+cd g-bizness
+```
+
+The Framework, Packages and Libraries used in this project are installed in a virtual environment(Recommended); i use pipenv. Instructions on how to get pipenv [here](https://pypi.org/project/pipenv/)
+
+```bash
+python3 -m pipenv shell
+```
+
+Install the requirements
+
+```bash
+python3 -m pip install -r requirements.txt
+```
 
 Then follow these steps:
-1. Move to root folder `cd webcommerce`
-2. create the database, i used postgres (pg Admin)
-3. Create a `.env` file in the root folder, provide the required database information  to the `.env` file (.env.example file is provided to help set this information)
-4. Create the tables with the django command line `python manage.py makemigrations` then `python manage.py migrate`
-5. Create your admin log in credentials to add Products in the backend `python manage.py createsuperuser`
-6. Finally, run the django server `python manage.py runserver `
+1. Move to root folder 
+
+```bash
+cd webcommerce
+```
+
+2. Create the tables with the django command line
+
+```bash
+python3 manage.py makemigrations
+```
+then migrate the changes
+ 
+```bash
+python3 manage.py migrate
+```
+
+Create an admin using command below and enter your preferred username, email and password.(You will use this to create products that user will view)
+ 
+```bash
+python3 manage.py createsuperuser
+```
+
+
+3. Finally, run the django server
+
+```bash
+python manage.py runserver
+```
+
+4. Access the django admin by adding ' /admin' to the url and login to products.
+
 
 
 ## Built With
@@ -59,7 +98,4 @@ I use exclusively Github
 
 This is an open source project not under any particular license.
 However framework, packages and libraries used are on their own licenses. Be aware of this if you intend to use part of this project for your own project.
-
-
-
 

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'payment.apps.PaymentConfig',
     #other required packages
-    'paypal.standard.ipn',
+    # 'paypal.standard.ipn',
     'crispy_forms',
     'django.contrib.humanize',
 ]
@@ -149,5 +149,5 @@ LOGIN_REDIRECT_URL = 'globalbiz-home'
 LOGIN_URL = 'login'
 
 #django-paypal settings
-PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL')
-PAYPAL_TEST = config('PAYPAL_TEST', cast=bool)
+# PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL')
+# PAYPAL_TEST = config('PAYPAL_TEST', cast=bool)
